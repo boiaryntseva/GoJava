@@ -9,7 +9,8 @@ import java.util.regex.Pattern;
 public class CustomFileReader {
 
     public static void writeAllMatchingTelNumbers() throws IOException{
-        Path fileName = Path.of("/Users/boiaryntseva/IdeaProjects/GoIt/src/resources/file.txt");
+        String basePath=System.getProperty("user.dir");
+        Path fileName = Path.of(basePath+"/src/main/java/resources/file.txt");
 
         String str = Files.readString(fileName);
 

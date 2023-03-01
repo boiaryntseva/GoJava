@@ -1,15 +1,18 @@
-package lesson10;
+package main.java.lesson10;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
 import java.io.*;
 import java.util.ArrayList;
 
 public class JSonConverter {
+    static String basePath=System.getProperty("user.dir");
     //  public  void getObjectFromJson() throws IOException {
 
     public static int countLinesInFile() throws IOException {
-        String fileName = "/Users/boiaryntseva/IdeaProjects/GoIt/src/resources/file2.txt";
+
+        String fileName = basePath+"/src/main/java/resources/file2.txt";
         BufferedReader reader = new BufferedReader(new FileReader(fileName));
         int lines = 0;
         while (reader.readLine() != null) lines++;
@@ -18,20 +21,20 @@ public class JSonConverter {
         return lines;
     }
 
-    public static ArrayList<User> createUserFromFile() throws IOException {
+    public static ArrayList<lesson10.User> createUserFromFile() throws IOException {
         int lines = countLinesInFile();
-        String fileName = "/Users/boiaryntseva/IdeaProjects/GoIt/src/resources/file2.txt";
-        ArrayList<User> user = new ArrayList<>();
+        String fileName = basePath+"/src/main/java/resources/file2.txt";
+        ArrayList <lesson10.User> user = new ArrayList<>();
         try (BufferedReader readerBF = new BufferedReader(new FileReader(fileName))) {
             readerBF.readLine();
             for (int i = 1; i < lines; i++) {
                 String[] count = readerBF.readLine().split(" ");
                 String name = count[0];
                 String age = count[1];
-                user.add(new User(name, Integer.parseInt(age)));
+                user.add(new lesson10.User(name, Integer.parseInt(age)));
             }
 
-            for (User u : user) {
+            for (lesson10.User u : user) {
                 System.out.println(u.getName() + u.getAge());
 
             }
@@ -44,9 +47,9 @@ public class JSonConverter {
     }
 
     public static void writeUserToFile() throws IOException {
-        ArrayList<User> sampleList = createUserFromFile();
+        ArrayList<lesson10.User> sampleList = createUserFromFile();
 
-        String path = "/Users/boiaryntseva/IdeaProjects/GoIt/src/resources/user.txt";
+        String path = basePath+"/src/main/java/resources/user.txt";
 
         try (PrintWriter out = new PrintWriter(new FileWriter(path))) {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();

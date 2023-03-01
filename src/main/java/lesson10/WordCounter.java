@@ -16,7 +16,10 @@ public class WordCounter {
 //                .forEach(System.out::println);
 //    }
         Map<String, Integer> countByWords = new HashMap<>();
-        Scanner s = new Scanner(new File("/Users/boiaryntseva/IdeaProjects/GoIt/src/resources/words.txt"));
+
+        //Scanner s = new Scanner(new File("/Users/boiaryntseva/IdeaProjects/GoIt/src/resources/words.txt"));
+        String basePath=System.getProperty("user.dir");
+        Scanner s = new Scanner(new File(basePath+"/src/main/java/resources/words.txt"));
         while (s.hasNext()) {
             String next = s.next();
             Integer count = countByWords.get(next);
