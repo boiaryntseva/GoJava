@@ -1,10 +1,8 @@
-package lesson10;
+package main.java.lesson10;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class WordCounter {
     public static void main(String[] args) throws IOException {
@@ -30,9 +28,20 @@ public class WordCounter {
             }
         }
         s.close();
-        countByWords.entrySet().forEach(entry -> {
-            System.out.println(entry.getKey() + " " + entry.getValue());
+
+        List<Map.Entry<String, Integer>> entryList = new ArrayList<Map.Entry<String, Integer>>(countByWords.entrySet());
+        Collections.sort(entryList, new Comparator<Map.Entry<String, Integer>>() {
+
+            @Override
+            public int compare(Map.Entry<String, Integer> obj1, Map.Entry<String, Integer> obj2) {
+                return obj2.getValue().compareTo(obj1.getValue());
+            }
         });
+        countByWords.clear();
+        for (Map.Entry<String, Integer> entry : entryList) {
+            countByWords.put(entry.getKey(), entry.getValue());
+            System.out.println(entry.getKey() + " " + entry.getValue());
+        }
     }
 
 }

@@ -49,7 +49,7 @@ public class JSonConverter {
     public static void writeUserToFile() throws IOException {
         ArrayList<lesson10.User> sampleList = createUserFromFile();
 
-        String path = basePath+"/src/main/java/resources/user.txt";
+        String path = basePath+"/src/main/java/resources/user.json";
 
         try (PrintWriter out = new PrintWriter(new FileWriter(path))) {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();

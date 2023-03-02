@@ -14,7 +14,7 @@ public class CustomFileReader {
 
         String str = Files.readString(fileName);
 
-        Pattern pattern = Pattern.compile("[1-9]\\d{2}[-][1-9]\\d{2}[-]\\d{4}|[(][1-9]\\d{2}[)][-][1-9]\\d{2}[-]\\d{4}");
+        Pattern pattern = Pattern.compile("[1-9]\\d{2}[-][1-9]\\d{2}[-]\\d{4}|[(][1-9]\\d{2}[)][ ][1-9]\\d{2}[-]\\d{4}");
         Matcher matcher = pattern.matcher(str);
 
         while (matcher.find()) {
